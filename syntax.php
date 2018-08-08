@@ -70,6 +70,34 @@ class syntax_plugin_targetlink extends DokuWiki_Syntax_Plugin {
 
         }
 
+        if($format == 'metadata') {
+            //simply calls the default function
+
+            //decide which kind of link it is
+            //(referred an idea from https://github.com/ironiemix/dokuwiki-plugin-menu/blob/master/syntax.php)
+            $ref = $data[1];
+            if ( preg_match('/^[a-zA-Z0-9\.]+>{1}.*$/u',$ref) ) {
+                // Interwiki
+                $interwiki = explode('>',$ref,2);
+                $renderer->interwikilink($data[1], $data[2], $interwiki[0], $interwiki[1]);
+
+            } elseif ( preg_match('/^\\\\\\\\[\w.:?\-;,]+?\\\\/u',$ref) ) {
+                // Windows Share
+                $renderer->windowssharelink($data[1], $data[2]);
+
+            } elseif ( preg_match('#^([a-z0-9\-\.+]+?)://#i',$ref) ) {
+                // external link (accepts all protocols)
+                $renderer->externallink($data[1], $data[2]);
+
+            } else {
+                // internal link
+                $renderer->internallink($data[1], $data[2]);
+
+            }
+
+        }
+
+
     }
 
     // Got an idea from https://github.com/rpeyron/plugin-button/blob/master/syntax.php
