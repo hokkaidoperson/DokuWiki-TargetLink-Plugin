@@ -24,7 +24,7 @@ class syntax_plugin_targetlink extends DokuWiki_Syntax_Plugin {
     }
 
     function connectTo($mode) {
-      $this->Lexer->addSpecialPattern('\[\[target=.*\|.*?\]\](?!\])',$mode,'plugin_targetlink');
+      $this->Lexer->addSpecialPattern('\[\[target=.*?\|.*?\]\](?!\])',$mode,'plugin_targetlink');
       $this->Lexer->addSpecialPattern('\[\[\+tab\|.*?\]\](?!\])',$mode,'plugin_targetlink');
     }
 

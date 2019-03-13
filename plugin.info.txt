@@ -1,7 +1,7 @@
 base targetlink
 author HokkaidoPerson
 email dosankomali@yahoo.co.jp
-date 2018-08-08
+date 2019-03-13
 name Target-Link Plugin
 desc Make links with specified targets not depending on the configuration. e.g.: The links usual open in the same tab, but this link opens in a new tab.
 url http://www.dokuwiki.org/plugin:targetlink
